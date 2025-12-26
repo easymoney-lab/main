@@ -1,0 +1,48 @@
+<!--pages/settings/settings.wxml-->
+<view class="container">
+  <view class="settings-card">
+    <view class="section-title">个性化设置</view>
+    
+    <view class="setting-item">
+      <text class="setting-label">我的名字</text>
+      <input class="setting-input" placeholder="输入你的名字" value="{{userNames.userA}}" bindinput="onUserNameAInput" maxlength="10" />
+    </view>
+
+    <view class="setting-item">
+      <text class="setting-label">TA的名字</text>
+      <input class="setting-input" placeholder="输入TA的名字" value="{{userNames.userB}}" bindinput="onUserNameBInput" maxlength="10" />
+    </view>
+
+    <button class="save-btn" bindtap="saveSettings">保存设置</button>
+  </view>
+
+  <view class="settings-card">
+    <view class="section-title">数据管理</view>
+    
+    <view class="setting-item">
+      <text class="setting-label">总记录数</text>
+      <text class="setting-value">{{stats.total}} 条</text>
+    </view>
+
+    <view class="setting-item">
+      <text class="setting-label">{{userNames.userA}}的记录</text>
+      <text class="setting-value">{{stats.userA}} 条</text>
+    </view>
+
+    <view class="setting-item">
+      <text class="setting-label">{{userNames.userB}}的记录</text>
+      <text class="setting-value">{{stats.userB}} 条</text>
+    </view>
+
+    <button class="danger-btn" bindtap="clearAllData">清空所有数据</button>
+  </view>
+
+  <view class="settings-card">
+    <view class="section-title">关于</view>
+    <view class="about-text">
+      <text>情侣行程记录小程序</text>
+      <text class="version">v1.0.0</text>
+    </view>
+  </view>
+</view>
+

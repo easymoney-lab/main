@@ -1,0 +1,45 @@
+<!--pages/add/add.wxml-->
+<view class="container">
+  <view class="form-card">
+    <view class="form-item">
+      <text class="label">当前身份</text>
+      <view class="user-selector">
+        <view class="user-option {{userIdentity === 'userA' ? 'active' : ''}}" bindtap="selectUser" data-user="userA">
+          {{userNames.userA}}
+        </view>
+        <view class="user-option {{userIdentity === 'userB' ? 'active' : ''}}" bindtap="selectUser" data-user="userB">
+          {{userNames.userB}}
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">时间</text>
+      <picker mode="time" value="{{time}}" bindchange="timeChange">
+        <view class="picker">
+          {{time || '选择时间'}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="label">地点</text>
+      <view class="location-input-wrapper">
+        <input class="input location-input" placeholder="输入地点或点击定位" value="{{location}}" bindinput="locationInput" />
+        <button class="location-btn" bindtap="chooseLocation">
+          <text class="location-icon">📍</text>
+          <text class="location-text">{{locationLoading ? '定位中...' : '定位'}}</text>
+        </button>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">内容</text>
+      <textarea class="textarea" placeholder="描述一下你在做什么..." value="{{content}}" bindinput="contentInput" maxlength="200" />
+      <text class="char-count">{{content.length}}/200</text>
+    </view>
+
+    <button class="submit-btn" bindtap="submitTrip">提交行程</button>
+  </view>
+</view>
+

@@ -1,0 +1,35 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view wx:if="{{trip}}" class="detail-card">
+    <view class="detail-header">
+      <view class="user-badge {{trip.user === userIdentity ? 'self' : 'other'}}">
+        {{trip.user === userIdentity ? userNames[trip.user] : userNames[trip.user]}}
+      </view>
+      <text class="time">{{trip.time}}</text>
+    </view>
+
+    <view class="detail-section">
+      <view class="section-title">📍 地点</view>
+      <view class="section-content">{{trip.location}}</view>
+    </view>
+
+    <view wx:if="{{trip.content}}" class="detail-section">
+      <view class="section-title">💭 内容</view>
+      <view class="section-content">{{trip.content}}</view>
+    </view>
+
+    <view class="detail-section">
+      <view class="section-title">🕐 记录时间</view>
+      <view class="section-content">{{trip.createTimeText}}</view>
+    </view>
+
+    <view class="action-buttons">
+      <button class="delete-btn" bindtap="deleteTrip">删除记录</button>
+    </view>
+  </view>
+
+  <view wx:else class="empty-state">
+    <text>行程不存在</text>
+  </view>
+</view>
+

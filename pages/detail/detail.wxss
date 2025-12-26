@@ -1,0 +1,89 @@
+/* pages/detail/detail.wxss */
+
+.detail-card {
+  background: white;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-top: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.user-badge {
+  display: inline-block;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.user-badge.self {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+  color: white;
+}
+
+.user-badge.other {
+  background: #e8f4f8;
+  color: #4a90e2;
+}
+
+.time {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.detail-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 15rpx;
+  font-weight: bold;
+}
+
+.section-content {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.8;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.action-buttons {
+  margin-top: 60rpx;
+  padding-top: 40rpx;
+  border-top: 2rpx solid #f0f0f0;
+}
+
+.delete-btn {
+  width: 100%;
+  background: #ff4757;
+  color: white;
+  border-radius: 50rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.delete-btn:active {
+  opacity: 0.8;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 150rpx 40rpx;
+  color: #999;
+}
+

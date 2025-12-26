@@ -1,0 +1,84 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="top-bar">
+    <view class="user-switch">
+    <view class="switch-item {{userIdentity === 'userA' ? 'active' : ''}}" bindtap="switchUser" data-user="userA">
+      {{userNames.userA}}
+    </view>
+    <view class="switch-item {{userIdentity === 'userB' ? 'active' : ''}}" bindtap="switchUser" data-user="userB">
+      {{userNames.userB}}
+    </view>
+    </view>
+    <view class="settings-btn" bindtap="goToSettings">
+      <text class="settings-icon">⚙️</text>
+    </view>
+  </view>
+
+  <!-- 统计信息 -->
+  <view wx:if="{{trips.length > 0}}" class="stats-card">
+    <view class="stat-item">
+      <text class="stat-label">总记录</text>
+      <text class="stat-value">{{stats.total}}</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-label">{{userNames.userA}}</text>
+      <text class="stat-value">{{stats.userA}}</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-label">{{userNames.userB}}</text>
+      <text class="stat-value">{{stats.userB}}</text>
+    </view>
+  </view>
+
+  <!-- 搜索框 -->
+  <view wx:if="{{trips.length > 0}}" class="search-box">
+    <input class="search-input" placeholder="搜索地点或内容..." value="{{searchKeyword}}" bindinput="onSearchInput" />
+    <text wx:if="{{searchKeyword}}" class="search-clear" bindtap="clearSearch">✕</text>
+  </view>
+
+  <!-- 行程列表 -->
+  <view class="trips-list">
+    <!-- 修改空状态判断逻辑 -->
+    <view wx:if="{{trips.length === 0}}" class="empty-state">
+      <text class="empty-icon">📝</text>
+      <text>还没有行程记录~</text>
+      <text class="empty-tip">快去汇报你的行程吧！</text>
+    </view>
+
+    <view wx:elif="{{filteredTrips.length === 0 && trips.length > 0}}" class="empty-state">
+      <text class="empty-icon">🔍</text>
+      <text>没有找到相关记录</text>
+      <text class="empty-tip">试试其他关键词吧~</text>
+    </view>
+    
+    <!-- 修复wx:else语法错误 -->
+    <view wx:else>
+      <view wx:for="{{filteredTrips}}" wx:key="id" class="trip-card" bindtap="viewDetail" data-id="{{item.id}}">
+        <view class="trip-header">
+          <view class="user-badge {{item.user === userIdentity ? 'self' : 'other'}}">
+            {{item.user === userIdentity ? userNames[userIdentity] : userNames[item.user]}}
+          </view>
+          <text class="time">{{item.time}}</text>
+        </view>
+        <view class="trip-location">
+          <text class="location-icon">📍</text>
+          <text class="location-text">{{item.location}}</text>
+        </view>
+        <view wx:if="{{item.content}}" class="trip-content">
+          {{item.content}}
+        </view>
+        <view class="trip-footer">
+          <text class="create-time">{{item.createTimeText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 调试按钮 -->
+  <!-- 简单刷新按钮 -->
+  <view wx:if="{{true}}" class="debug-btn" bindtap="simpleRefresh" style="background: #4CAF50; margin-top: 20rpx;">
+    <text>🔄 简单刷新</text>
+  </view>
+</view>
